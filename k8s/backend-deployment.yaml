@@ -1,24 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: team-flags-app
   labels:
-    app: backend
+    app: team-flags-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend
+      app: team-flags-app
   template:
     metadata:
       labels:
-        app: backend
+        app: team-flags-app
     spec:
       containers:
-      - name: backend
-        image: team-flags-app
+      - name: team-flags-app
+        image: team-flags-app:v1
+        imagePullPolicy: Never
         ports:
         - containerPort: 3000
-        env:
-        - name: MONGO_URL
-          value: "mongodb://mongo:27017/myapp"
+#        env:
+#       - name: MONGO_URL
+#         value: "mongodb://mongo:27017/myapp"
