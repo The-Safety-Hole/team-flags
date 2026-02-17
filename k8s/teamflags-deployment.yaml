@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamflags
+  labels:
+    app: teamflags
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: teamflags
+  template:
+    metadata:
+      labels:
+        app: teamflags
+    spec:
+      containers:
+      - name: teamflags
+        image: teamflags:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
